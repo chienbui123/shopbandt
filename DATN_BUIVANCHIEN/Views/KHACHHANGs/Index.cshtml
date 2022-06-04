@@ -1,0 +1,108 @@
+﻿@model PagedList.IPagedList<DATN_BUIVANCHIEN.Models.KHACHHANG>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<button><a href="@Url.Action("Index", "Admin")">Về trang trủ</a></button>
+<h2>Quản lý Khách Hàng</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        Tìm tài khoản:@Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm" />
+    </p>
+}
+<p>
+    <button>@Html.ActionLink("Create New", "Create") </button>
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Họ Tên
+        </th>
+        <th>
+            Tài khoản
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            địa chỉ
+        </th>
+        <th>
+            Sđt
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taikhoan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matkhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienthoaiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaysinh)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaKH }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaKH }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaKH })
+            </td>
+        </tr>
+    }
+
+</table>
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

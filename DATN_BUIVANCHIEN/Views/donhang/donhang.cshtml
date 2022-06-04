@@ -1,0 +1,78 @@
+﻿@model IEnumerable<DATN_BUIVANCHIEN.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "donhang";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+
+<h2> Đơn hàng đã đặt </h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dathanhtoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tinhtranggiaohang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngaygiao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KHACHHANG.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dathanhtoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tinhtranggiaohang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaydat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngaygiao)
+        </td>
+        <td>@Html.ActionLink("Chi Tiết Đơn Hàng", "chitietdonhang", new { id = item.MaDonHang })</td>
+    </tr>
+}
+
+</table>

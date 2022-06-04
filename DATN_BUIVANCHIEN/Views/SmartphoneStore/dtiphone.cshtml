@@ -1,0 +1,45 @@
+﻿
+<style type="text/css">
+    #products {
+        width: 1100px;
+    }
+
+    #product {
+        position: relative;
+        width: 222px;
+        height: 320px;
+        float: left;
+        display: block;
+        padding: 5px;
+        margin: 5px;
+        text-align: left;
+        background-color: #fff;
+        border: 1px solid #999;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+    }
+
+        #product:hover {
+            box-shadow: 2px 2px 2px grey;
+            display: normal;
+        }
+</style>
+
+<h1 style="color:blue ;background-color:darkgrey">ĐIỆN THOẠI IPHONE</h1>
+<br />
+
+<div id="products">
+    @foreach (var dienthoai in Model)
+    {
+        <div id="product">
+            <a href="@Url.Action("Details","SmartphoneStore",new { id=dienthoai.MaDT})" />
+            <h2>@dienthoai.TenDT</h2><br />
+
+            <img alt="@dienthoai.TenDT" id="anh" src="~/wwwroot/images/@dienthoai.Anhbia" width="215" height="270" /><br />
+            <h3 style="color:crimson;float:right; ">@dienthoai.Giaban VNĐ</h3>
+        </div>
+    }
+    <div style="clear:left;"></div>
+    <a href="@Url.Action("iphone","SmartphoneStore")"><h3 style="color:blue;text-align:center;font:20px">Xem thêm Iphone >>></h3></a>
+</div>

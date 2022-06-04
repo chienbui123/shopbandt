@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DATN_BUIVANCHIEN.Models.NHAXUATBAN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+<button><a href="@Url.Action("Index", "Admin")">Về trang trủ</a> </button>
+<h2>Quản lý hãng điện thoại</h2>
+<button><p>
+    @Html.ActionLink("Thêm hãng", "Create")
+</p> </button>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenNXB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenNXB)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diachi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DienThoai)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaNXB }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaNXB }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaNXB })
+        </td>
+    </tr>
+}
+
+</table>

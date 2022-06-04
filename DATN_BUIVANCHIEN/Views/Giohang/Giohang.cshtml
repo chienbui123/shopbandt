@@ -1,0 +1,85 @@
+﻿@using DATN_BUIVANCHIEN.Models
+@{
+    ViewBag.Title = "Giohang";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table align="center"border="1" cellpadding="0" cellspacing="0">
+    <tr style="text-align:center;font-weight:bold">
+        <td>mã điện thoại</td>
+        <td>Tên điện thoại</td>
+        <td>Ảnh bìa</td>
+        <td>Số Lượng</td>
+        <td>Đơn giá</td>
+        <td>Thành tiền</td>
+        <td width="50px"></td>
+        <td width="50px"></td>
+        <td width="50px"></td>
+    </tr>
+    @foreach(var item in Model)
+            {
+<tr style="text-align:center; font-weight:bold">
+    <td>@item.iMaDT</td>
+    <td>@item.sTenDT</td>
+    <td><img src="~/wwwroot/images/@item.sAnhbia" width="100px" height="200px" /></td>
+              @using (Html.BeginForm("Capnhatgiohang", "Giohang", new { @iMaSp = item.iMaDT }))
+    {
+        <td><input type="number" min="1" name="txtSoluong" value="@item.isoluong"
+                   style="background-color:yellow" />
+    </td>
+        <td>@String.Format("{0:0,0}", item.dDonggia)</td>
+
+        <td>@String.Format("{0:0,0}", item.dThanhtien)</td>
+        <td>
+            <a href="@Url.Action("Details","SmartphoneStore",new { id=item.iMaDT})">
+                Chi tiết
+            </a>
+        </td>
+        <td>@Html.ActionLink("Xóa", "XoaGiohang", new { @iMaSp = item.iMaDT })</td>
+        <td><input type="submit" value="Cập nhật" /></td>
+    }
+
+</tr>
+            }
+    <tr style="text-align:right;font-weight:bold;color:red">
+        <td colspan="4">Số Lượng Điện thoại: @ViewBag.Tongsoluong</td>
+        <td colspan="5">Tổng Tiền:@string.Format("{0:0,0}",ViewBag.Tongtien) VND</td>
+    </tr>
+    <tr style="text-align:right;font-weight:bold;color:red">
+        <td colspan="9">
+            @Html.ActionLink("Xoá tất cả sản phẩm","XoaTatcaGiohang")
+        </td>
+    </tr>
+    <tr style="text-align:right; font-weight:bold;color:blue">
+        <td colspan="9" align="center">
+            @Html.ActionLink("ĐẶT HÀNG","DatHang","GioHang")
+        </td>
+    </tr>
+</table>

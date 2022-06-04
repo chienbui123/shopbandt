@@ -1,0 +1,65 @@
+﻿@model DATN_BUIVANCHIEN.Models.DONDATHANG
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn thực sự muốn xóa đơn hàng khỏi cửa hàng chứ?</h3>
+<div>
+    <h4>DONDATHANG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KHACHHANG.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dathanhtoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dathanhtoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tinhtranggiaohang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tinhtranggiaohang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaydat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaydat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaygiao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaygiao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở Về", "Index")
+        </div>
+    }
+</div>

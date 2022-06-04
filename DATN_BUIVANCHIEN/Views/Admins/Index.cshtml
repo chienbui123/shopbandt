@@ -1,0 +1,73 @@
+﻿@model IEnumerable<DATN_BUIVANCHIEN.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+<a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a>
+<h2>Quản lý Tài KHoản ADMIN</h2>
+<button><p>
+    @Html.ActionLink("Tạo tài khoản mới", "Create")
+</p> </button>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taikhoan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taikhoan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Matkhau)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { id=item.MaTK }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaTK }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaTK })
+        </td>
+    </tr>
+}
+
+</table>

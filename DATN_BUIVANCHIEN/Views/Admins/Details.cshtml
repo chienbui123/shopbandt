@@ -1,0 +1,43 @@
+﻿@model DATN_BUIVANCHIEN.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a>
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Admin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taikhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taikhoan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Matkhau)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Matkhau)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaTK }) |
+    @Html.ActionLink("trở về", "Index")
+</p>

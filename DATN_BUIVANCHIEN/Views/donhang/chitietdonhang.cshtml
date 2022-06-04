@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DATN_BUIVANCHIEN.Models.CHITIETDONTHANG>
+
+@{
+    ViewBag.Title = "donhang";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+<a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a>
+<h2>Chi Tiết Đơn Đặt Hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DIENTHOAI.TenDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DONDATHANG.MaDonHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dongia)
+        </th>
+        <th>thành tiền</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIENTHOAI.TenDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DONDATHANG.MaDonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dongia)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.Thanhtien)</td>
+        </tr>
+    }
+    <tr> <td colspan="5" style="text-align:right;font-weight:bold;color:red">Tổng Tiền:@Model.Sum(x => x.Thanhtien) VNĐ </td></tr>
+</table>

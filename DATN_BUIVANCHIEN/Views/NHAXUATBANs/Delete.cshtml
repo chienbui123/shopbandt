@@ -1,0 +1,55 @@
+﻿@model DATN_BUIVANCHIEN.Models.NHAXUATBAN
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a>
+<h2>Xóa</h2>
+
+<h3>Bạn chắc là xóa hãng điện thoại này chứ?</h3>
+<div>
+    <h4>NHAXUATBAN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Diachi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DienThoai)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Index")
+        </div>
+    }
+</div>
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}

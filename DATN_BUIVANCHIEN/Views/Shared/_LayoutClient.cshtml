@@ -1,0 +1,271 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+  
+    @*<link href="~/wwwroot/CSS/Style.css" rel="stylesheet" type="text/css" />*@
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            font-size: 12px;
+            font-family: Arial, "Times New Roman", Times, serif;
+        }
+
+        #page {
+            width: 100%;
+            margin: 0 auto;
+            border: 1px solid #999;
+        }
+        /* Header  */
+        #header {
+            width: 100%;
+        }
+
+            #header #logo {
+                background-image: linear-gradient(#3fd3a1,#3dc3ac);
+                height: 112px;
+            }
+
+                #header #logo a img {
+                    margin-top: 0px;
+                    float: left;
+                    width: 230px;
+                }
+
+                #header #logo img {
+                    border-style: none;
+                    border-width: medium;
+                    float: right;
+                }
+
+        /* Menu ngang */
+
+        #menung {
+            width: 100%;
+            height: 35px;
+            line-height: 35px; /*chiều cao giữa các dòng*/
+            padding-left: 20px;
+            color: indigo;
+            background-image: linear-gradient(aquamarine,aqua); /* ảnh nền menu */
+            border-top: 5px solid #F66D05; /* đường viền cam*/
+        }
+
+            #menung ul {
+                font-size: 14px;
+                font-weight: bold;
+                list-style: none;
+            }
+
+                #menung ul li { /*hiển thị theo hàng*/
+                    float: left;
+                }
+
+                    #menung ul li a {
+                        display: block;
+                        color: indigo;
+                        text-decoration: none;
+                        padding: 0px 15px;
+                        cursor: pointer;
+                    }
+
+                        #menung ul li a:hover {
+                            color: #B7CF1A;
+                        }
+
+
+        /* MAIN  */
+        #main {
+            padding: 10px 0px;
+            background: #FAFAFA;
+        }
+
+        /* Menu dọc */
+
+        #left {
+            float: left;
+            width: 200px;
+            min-height: 600px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+            #left ul {
+                list-style: none;
+            }
+
+                #left ul li a {
+                    display: block;
+                    padding-left: 22px;
+                    text-decoration: none;
+                    color: #000;
+                    border-bottom: 2px solid #FFF; /*đường thẳng ngăn các mục chọn */
+                }
+
+                    #left ul li a span {
+                        font-weight: normal;
+                        color: #666;
+                    }
+
+        #menud a {
+            height: 30px;
+            line-height: 30px;
+            background: url(../images/list-style.gif) 10px 15px no-repeat #EEE;
+        }
+
+        #menud ul a:hover {
+            background: #CCFF33;
+        }
+
+        #left div {
+            margin-bottom: 20px;
+        }
+
+        #left img {
+            float: right;
+            border: none;
+        }
+
+        #left p {
+            font-weight: bold;
+            padding-left: 25px;
+            line-height: 36px;
+            color: #000;
+            background: url(../images/title.jpg) no-repeat;
+        }
+        /* Content  */
+        #content {
+            float: left;
+            width: 1100px;
+            padding: 10px; /* thêm vào khoảng không trên, dưới, trái, phải*/
+            min-height: 1200px;
+            border: 1px solid #999;
+        }
+
+        .name a {
+            text-decoration: none;
+        }
+
+        /* Footer  */
+
+        #footer {
+            color: #FFF;
+            width: 100%;
+            background-image: linear-gradient(#3fd3a1,#3dc3ac);
+            overflow: hidden;
+            border-top: 5px solid #F66D05; /* đường viền cam*/
+        }
+
+            #footer p {
+                float: left;
+                padding: 20px 40px;
+                width: 351px;
+            }
+
+        #sdt {
+            font-family: Impact Charcoal;
+            color: forestgreen;
+            float: right;
+            font-size: 20px;
+            position: relative;
+            top: 80px;
+        }
+
+        #lh {
+            position: relative;
+            left: 80px;
+        }
+        #zl {
+            position: relative;
+            left: 80px;
+        }
+        #mes {
+            position: relative;
+            left: 70px;
+        }
+        #search {
+            position: relative;
+            left:150px;
+        }
+        #anhtk {
+            width: 600px;
+            height: 80px;
+            position: relative;
+            top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+            <div id="page" >
+                <div id="header">
+                    <div id="logo">
+                        <p id="sdt">0388542661</p>
+                        <img src="~/wwwroot/images/lienhe.png" id="lh" height="80px" width="80px" />&nbsp;
+                        <img src="~/wwwroot/images/zalo.png"id="zl" height="100px" width="100px" />
+                        <img src="~/wwwroot/images/messenger.png" id="mes" height="100px" width="100px" />
+                        <a href="/SmartphoneStore/Index">
+                            <img src="~/wwwroot/images/logo.png" alt="Smartphonestore" border="0" />
+                        </a>
+                        <a href="/SmartphoneStore/timkiem"id="search" >
+                            <img src="~/wwwroot/images/searching.png"  id="anhtk" alt="" />
+                        </a>
+                        
+
+
+                        
+                    </div>
+                    <div id="menung">
+                        <ul>
+
+                            <li><a href="/SmartphoneStore/Index"><span>Trang chủ</span></a> </li>
+
+                            <li><a href="/Giohang/Giohang"><span>Giỏ hàng</span></a> </li>
+                            <li><a href="/Nguoidung/Dangky"><span>Đăng ký</span></a> </li>
+                            <li><a href="/Nguoidung/Dangnhap"><span>Đăng nhập</span></a> </li>
+                            <li><a href="/TTkhachhang/xemthongtinkhachhang"><span>Thông tin khách hàng</span></a> </li>
+                            <li><a href="/donhang/donhang"><span>đơn đã đặt</span></a> </li>
+
+                        </ul>
+                    </div>
+                </div> 
+                <div id="main">
+                    <div id="left">
+                        <div id="menud">
+                            <p>Danh mục sản phẩm</p>
+                            <ul>
+                                <li><a href="/SmartphoneStore/DTcaocap"><span>ĐIỆN THOẠI CAO CẤP</span></a> </li>
+                                <li><a href="/SmartphoneStore/DTtrungcap"><span>ĐIỆN THOẠI TẦM TRUNG</span></a> </li>
+                                <li><a href="/SmartphoneStore/DTgiare"><span>ĐIỆN THOẠI GIÁ RẺ</span></a> </li>
+                                <li><a href="/SmartphoneStore/samsung"><span>SAMSUNG</span></a> </li>
+                                <li><a href="/SmartphoneStore/iphone"><span>IPHONE</span></a> </li>
+                                <li><a href="/SmartphoneStore/oppo"><span>OPPO</span></a> </li>
+
+                                <li><a href="/SmartphoneStore/xiaomi"><span>XIAOMI</span></a> </li>
+
+                            </ul>
+                        </div>
+                    </div> 
+                <div id="content">
+                            @RenderBody()
+                 </div>
+                   
+             </div>
+                <div id="footer">
+                    <p>
+                        &copy; Copyright : 2022<br />
+                        SmartPhone Store project
+                    </p>
+                    <p>
+                        Đồ ná tốt nghiệp<br />
+                        Khoa CNTT - ĐHCN Hà Nội<br />
+                        Minh Khai, Từ Liêm, Hà Nội
+                    </p>
+                </div> 
+         </div>
+</body>
+</html>

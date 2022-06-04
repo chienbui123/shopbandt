@@ -1,0 +1,146 @@
+﻿@model PagedList.IPagedList<DATN_BUIVANCHIEN.Models.DIENTHOAI>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid #868585;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+
+    table tr:nth-child(odd) {
+        background-color: #eee;
+    }
+
+    table tr:nth-child(even) {
+        background-color: white;
+    }
+
+    table tr:nth-child(1) {
+        background-color: skyblue;
+    }
+</style>
+<button> <a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a></button>
+<h2>Quản lý Điện thoại</h2>
+
+<p>
+    <button>@Html.ActionLink("Thêm Điện thoại", "Create") </button>  
+</p>
+@using (Html.BeginForm())
+{
+    <p>
+        Tìm điện thoại:@Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm" />
+    </p>
+}
+<table class="table" >
+    <tr>
+        <th>
+            Tên hệ điều hành
+        </th>
+        <th>
+            Tên hãng
+        </th>
+        <th>
+            Tên điện thoại
+        </th>
+        <th>
+            giá bán
+        </th>
+        <th>
+            Màn hình
+        </th>
+        <th>
+            Ram
+        </th>
+        <th>
+            Rom
+        </th>
+        <th>
+            Camera
+        </th>
+        <th>
+            Mô Tả
+        </th>
+        <th>
+            Ảnh bìa
+        </th>
+        <th>
+            Ngày Cập Nhật
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HDH.TenHDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NHAXUATBAN.TenNXB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giaban)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manhinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ram)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cammera)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mota)
+            </td>
+            <td>
+                @{
+                    //Lấy đường dẫn file ảnh
+                    string ImagePath = "~/wwwroot/images/" + item.Anhbia;
+                }
+                <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                <br />
+                @Html.DisplayFor(modelItem => item.Anhbia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngaycapnhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluongton)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MaDT }) |
+                @Html.ActionLink("Chi Tiết", "Details", new { id = item.MaDT }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaDT })
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

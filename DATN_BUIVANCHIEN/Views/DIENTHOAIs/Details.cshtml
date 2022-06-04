@@ -1,0 +1,122 @@
+﻿@model DATN_BUIVANCHIEN.Models.DIENTHOAI
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<a href="@Url.Action("Index", "Admin")" style="font:30px">Về trang trủ</a>
+<h2>Chi Tiết</h2>
+
+<div>
+    <h4>DIENTHOAI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HDH.TenHDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HDH.TenHDH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHAXUATBAN.TenNXB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHAXUATBAN.TenNXB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Giaban)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Giaban)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Manhinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Manhinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ram)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cammera)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cammera)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mota)
+        </dd>
+
+        <dt>
+            @{
+                //Lấy đường dẫn file ảnh
+                string ImagePath = "~/wwwroot/images/" + Model.Anhbia;
+            }
+            <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
+            <br />
+            @Html.DisplayFor(model => Model.Anhbia)
+
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anhbia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngaycapnhat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapnhat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soluongton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluongton)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Xóa", "Edit", new { id = Model.MaDT }) |
+    @Html.ActionLink("Trở Về", "Index")
+</p>
